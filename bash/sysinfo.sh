@@ -8,6 +8,7 @@ FQDN1=$(hostname)
 #The operating system name and version
 OS_NAME=$(cat /etc/os-release | grep -w NAME)
 VERSION_NAME=$(cat /etc/os-release | grep -w VERSION)
+
 #IP address used by the computer 
 IP_ADD=$(ip a s enp0s8 | grep -w inet | awk '{print $2}')
 
