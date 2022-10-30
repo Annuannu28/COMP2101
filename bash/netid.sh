@@ -59,7 +59,7 @@ my_hostname="$(hostname) / $(hostname -I)"
 # the default route can be found in the route table normally
 # the router name is obtained with getent
 default_router_address=$(ip r s default| awk '{print $3}')
-default_router_name=$(getent hosts $default_router_address|awk '{print $2}')
+default_router_name=$(getent hosts $default_router_address | awk '{print $2}')
 
 [ "$verbose" = "yes" ] && echo "Checking for external IP address and hostname"
 # finding external information relies on curl being installed and relies on live internet connection
@@ -110,7 +110,7 @@ ipv4_hostname=$(getent hosts $ipv4_address | awk '{print $2}')
 #   e.g. grep -q mynetworknumber /etc/networks || (echo 'mynetworkname mynetworknumber' |sudo tee -a /etc/networks)
 network_address=$(ip route list dev $interface scope link|cut -d ' ' -f 1)
 network_number=$(cut -d / -f 1 <<<"$network_address")
-network_name=$(getent networks $network_number|awk '{print $1}')
+network_name=$(getent networks $network_number | awk '{print $1}')
 
 cat <<EOF
 
